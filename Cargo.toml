@@ -12,10 +12,10 @@ repository = "https://github.com/definetely-not-a-clown/not_rusty_pdf"
 
 [dependencies]
 log = "0.4.14"
-lopdf = { version = "0.27.0", features = [
+lopdf = { version = "0.31.0", features = [
     "chrono_time",
     "nom_parser",
     "embed_image"
-], default-features = false, git = "https://github.com/J-F-Liu/lopdf", branch = "master" }
+], default-features = false }
 png = "0.17.2"
 imagesize = "0.9"

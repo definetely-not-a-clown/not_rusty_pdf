@@ -173,11 +173,11 @@ impl From<ImageXObject> for lopdf::Stream {
             ColorType::Indexed => "Indexed",
             ColorType::Rgba | ColorType::GrayscaleAlpha => "DeviceN",
         };
-        let identity_matrix: Vec<f32> = vec![1.0, 0.0, 0.0, 1.0, 0.0, 0.0];
+        let identity_matrix: Vec<i64> = vec![1, 0, 0, 1, 0, 0];
         let bbox: lopdf::Object = Array(
             identity_matrix
                 .into_iter()
-                .map(|i| Object::Real(i))
+                .map(|i| Object::Integer(i))
                 .collect(),
         );
 

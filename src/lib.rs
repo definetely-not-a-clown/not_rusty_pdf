@@ -324,13 +324,15 @@ impl PDFSigningDocument {
                 // Child should be of `Type` `Annot` for Annotation.
                 if child_dict.has(b"Rect") {
                     let child_rect = child_dict.get(b"Rect")?.as_array()?;
+
+                    // fuck I found it
                     if child_rect.len() >= 4 {
                         // Found a reference, set as return value
                         rect = Some(Rectangle {
-                            x1: child_rect[0].as_i64()? as f64,
-                            y1: child_rect[1].as_i64()? as f64,
-                            x2: child_rect[2].as_i64()? as f64,
-                            y2: child_rect[3].as_i64()? as f64,
+                            x1: child_rect[0].as_f32()?.into(),
+                            y1: child_rect[1].as_f32()?.into(),
+                            x2: child_rect[2].as_f32()?.into(),
+                            y2: child_rect[3].as_f32()?.into(),
                         });
                     }
                 }
