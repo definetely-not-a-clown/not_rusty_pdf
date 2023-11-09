@@ -20,7 +20,6 @@ project if it is something you are interested in!
 
 ## Current Features
 
-  - Render html to pdf using headless chrome
   - Add text to pdf
   - Add png file to pdf
   - merge pdf files

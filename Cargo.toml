@@ -1,7 +1,7 @@
 [package]
 name = "not_rusty_pdf"
 description = "Crate adding text and images to existing pdf files"
-version = "0.2.1"
+version = "0.2.2"
 authors = ["I'm not a clown, I promise <lewispersonalitiesgang@yandex.com>"]
 edition = "2021"
 license = "MIT OR Apache-2.0"
@@ -18,4 +18,6 @@ lopdf = { version = "0.31.0", features = [
     "embed_image"
 ], default-features = false }
 png = "0.17.2"
+
+[dev-dependencies]
 imagesize = "0.9"
