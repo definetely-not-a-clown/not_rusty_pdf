@@ -1,7 +1,7 @@
 // This code is inspired by https://github.com/fschutt/printpdf/blob/2bebdc65d06dafbe926ed4b43fedd10f966c59d3/src/xobject.rs
 
 use crate::Error;
-use lopdf::ObjectId;
+use lopdf::{Object, ObjectId};
 use png::{BitDepth, ColorType};
 use std::io::Read;
 
@@ -173,8 +173,13 @@ impl From<ImageXObject> for lopdf::Stream {
             ColorType::Indexed => "Indexed",
             ColorType::Rgba | ColorType::GrayscaleAlpha => "DeviceN",
         };
-        let identity_matrix: Vec<f64> = vec![1.0, 0.0, 0.0, 1.0, 0.0, 0.0];
-        let bbox: lopdf::Object = Array(identity_matrix.into_iter().map(Real).collect());
+        let identity_matrix: Vec<f32> = vec![1.0, 0.0, 0.0, 1.0, 0.0, 0.0];
+        let bbox: lopdf::Object = Array(
+            identity_matrix
+                .into_iter()
+                .map(|i| Object::Real(i))
+                .collect(),
+        );
 
         let mut dict = lopdf::Dictionary::from_iter(vec![
             ("Type", Name("XObject".as_bytes().to_vec())),
